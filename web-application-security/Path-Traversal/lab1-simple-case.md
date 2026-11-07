@@ -1,6 +1,8 @@
-## Objective: To understand how path traversal attacks are carried out and carry one out in a controlled environment
+## Objective: 
+To understand how path traversal attacks are carried out and carry one out in a controlled environment
 
-## Introduction: File path traversal is an attack method where an attacker manipulates a file path input to access files outside the directory an application intends to expose. This can include application source code, configuration files or credentials. In this walkthrough, I’ll demonstrate a simple path traversal exploit against a PortSwigger lab, with the steps taken to identify and exploit the vulnerability.
+## Introduction: 
+File path traversal is an attack method where an attacker manipulates a file path input to access files outside the directory an application intends to expose. This can include application source code, configuration files or credentials. In this walkthrough, I’ll demonstrate a simple path traversal exploit against a PortSwigger lab, with the steps taken to identify and exploit the vulnerability.
 
 ## Initial Reconnaissance:
 1.	Open the lab
@@ -16,8 +18,11 @@
 3.	Locate the request for the image in the HTTP history tab on Burp Suite and send to repeater
 4.	Replace the value of the filename parameter with ‘/../../../etc/passwd’
 
-## Successful Payload: ‘/../../../etc/passwd’
-## Why Payload Worked: ../ represents navigating one directory level up in the file system. By repeating this sequence, the requested path traverses beyond the intended image directory. //etc/passwd’ specifies the target file the attacker attempts to access.
+## Successful Payload: 
+‘/../../../etc/passwd’
+
+## Why Payload Worked: 
+../ represents navigating one directory level up in the file system. By repeating this sequence, the requested path traverses beyond the intended image directory. //etc/passwd’ specifies the target file the attacker attempts to access.
 
 ## Outcome: 
 •	The Repeater response returned the contents of /etc/passwd, exposing system account information, including usernames and associated home directories.
