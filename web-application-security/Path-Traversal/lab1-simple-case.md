@@ -7,7 +7,7 @@
 2.	Browse the posts
 3.	Right click on an image and select inspect
 4.	Locate the <img> tag in the HTML and observe how the’ src attribute reveals an internal file path
-5.	5.	Identify the ‘filename’ parameter as untrusted input used to build a file path
+5.	Identify the ‘filename’ parameter as untrusted input used to build a file path
 6.	Send the image request to Burp Suite and forward it to Repeater
  
  ## Exploitation Steps:
@@ -28,14 +28,22 @@
 
 ## Key Learning Points:
 Through this lab I learned that many common validation strategies fail to fully prevent path traversal attacks.
+
 •	No validation at all offers no protection
+
 •	Validating a filename before decoding it means dangerous input can appear only after the check is already done, letting it slip through unnoticed.
+
 •	Requiring a path to start in an approved directory doesn’t solve the problem as the attacker can still modify directories and filenames afterwards
+
 •	Blocking known directory traversal patterns can still allow absolute paths through
+
 •	Non-recursive stripping of certain characters in a file name will let dangerous file paths form after the first stripping
+
 •	Requiring a filename to end in a particular extension can be bypassed on older or unsafe systems that interpret termination characters differently
 
 ## Mitigation:
 •	Validate user given filenames against an allowlist of permitted values.
+
 •	Canonicalize and normalize file paths before performing validation.
+
 •	Verify resolved file path remains within intended directory.
