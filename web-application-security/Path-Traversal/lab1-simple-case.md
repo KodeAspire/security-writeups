@@ -21,7 +21,9 @@
 
 ## Outcome: 
 •	The Repeater response returned the contents of /etc/passwd, exposing system account information, including usernames and associated home directories.
+
 •	This demonstrated that the application allowed access to a file outside its intended image directory.
+
 •	The PortSwigger lab was marked as Solved
 
 ## Key Learning Points:
